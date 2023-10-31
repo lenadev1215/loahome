@@ -1,0 +1,15 @@
+@charset 'UTF-8';
+
+$desktop: 1380px; //min-width
+$tablet: 1199px; // max-width
+$mobile: 767px; // max-width
+
+// color
+$main: #16469d;
+$sub: #f7931d;
+
+$imagesPath : "/assets/images/";
+/*
+Usage:
+    background-image: url(#{$imagesPath}image.png);
+*/

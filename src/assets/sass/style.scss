@@ -1,0 +1,14 @@
+@charset 'UTF-8';
+
+/// Main stylesheet scss file
+
+@import '1_base/variables';
+@import '1_base/mixins';
+@import '1_base/typography';
+@import '1_base/reset';
+@import '1_base/common';
+@import '1_base/animate';
+
+@import '2_parts/main';
+
+@import '3_device/mobile';

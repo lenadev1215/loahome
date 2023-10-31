@@ -1,0 +1,22 @@
+@charset 'UTF-8';
+
+@media screen and ( min-width: $desktop ) {
+.pc {
+    display: block !important;
+}
+.m {
+    display: none !important;
+}
+}
+/* END min-width: $desktop */
+
+@media screen and ( max-width: $desktop ) {
+/* ************************************************
+    mobile only
+************************************************* */
+}
+/* END max-width: $tablet */
+
+@media screen and ( max-width: $mobile ) {
+}
+/* END max-width: $mobile */
