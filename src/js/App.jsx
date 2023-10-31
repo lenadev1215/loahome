@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-// 메인
+import '../assets/sass/style.scss';
 import Main from './pages/Main';
 
 const App = () => {
