@@ -5,7 +5,7 @@ import HomeworkList from './HomeworkList';
 const Board = () => {
   return (
     <div className="board">
-      <APIkeyFormContainer />
+      <APIkeyFormContainer i={0} />
       <div className="board__item"></div>
       <div className="board__item"></div>
     </div>

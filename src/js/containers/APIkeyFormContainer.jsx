@@ -17,6 +17,10 @@ const APIkeyFormContainer = ({ i }) => {
     }
   }, []);
 
+  useEffect(() => {
+    console.log(key);
+  }, [ key ])
+
   const onChange = e => {
     const { value } = e.target;
     setKey( value );
