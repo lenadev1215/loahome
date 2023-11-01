@@ -44,9 +44,10 @@
     background-color: #A0C49D;
 }
 .wrapper {
-    width: 96%;
+    width: 100%;
+    max-width: 1550px;
     height: 92vh;
-    margin: 0 auto;
+    margin: 30px auto;
 }
 
 /* ************************************************
@@ -71,5 +72,21 @@
                 background-color: #E1ECC8;
             }
         }
+    }
+}
+
+/* ************************************************
+    board
+************************************************* */
+.board {
+    width: 100%;
+    height: calc(100% - 60px);
+    background-color: #E1ECC8;
+    border-radius: 15px;
+    border-top-left-radius: 0;
+
+    &__item {
+        background-color: #F7FFE5;
+        border-radius: 15px;
     }
 }
