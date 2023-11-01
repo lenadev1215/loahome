@@ -13,20 +13,20 @@ const GET_CHARA_FAILURE = 'chara/GET_CHARA_FAILURE';
 export const changeField = createAction(CHANGE_FIELD, ({ form, name, value }) => ({ form, name, value }));
 export const initializeForm = createAction(INITIALIZE_FORM);
 
-export const sendQna = createRequestThunk(GET_CHARA, charaAPI.getChara);
+export const getChara = createRequestThunk(GET_CHARA, charaAPI.getChara);
 
 const initialState = {
   form: {
-    name: '',
+    characterName: '',
   },
   success: null,
 };
 
 export default handleActions(
   {
-    [CHANGE_FIELD]: (state, { payload: { name } }) => 
+    [CHANGE_FIELD]: (state, { payload: { value } }) => 
     produce(state, draft => {
-      draft.form[name] = name;
+      draft.form.characterName = value;
     }),
     [INITIALIZE_FORM]: state =>
       produce(state, draft => {

@@ -2,9 +2,12 @@ import axios from 'axios';
 
 // base url
 const apiBaseUri = 'https://developer-lostark.game.onstove.com';
+const key='eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IktYMk40TkRDSTJ5NTA5NWpjTWk5TllqY2lyZyIsImtpZCI6IktYMk40TkRDSTJ5NTA5NWpjTWk5TllqY2lyZyJ9.eyJpc3MiOiJodHRwczovL2x1ZHkuZ2FtZS5vbnN0b3ZlLmNvbSIsImF1ZCI6Imh0dHBzOi8vbHVkeS5nYW1lLm9uc3RvdmUuY29tL3Jlc291cmNlcyIsImNsaWVudF9pZCI6IjEwMDAwMDAwMDAyNjcyOTYifQ.JFVX0CVXdcQ8hMGY0jaItAqEymfdo5JA3bx0oYlCcIgnUK3cMWVC5wsxeru6ufsGro_Hp9AlTT88cGF8JMacMOyTapxCr9oSSUdBmJ6VW5Atg1rLOiRapdZlQD0O6Gxoc3z8_mTKikNOxQY8Oz27NE6NsLPLdYkVRkpHdadEntH4po7CarbcDnOImlOj-IsVgap55BRZwrERD8TvEfdk7f6qzu354t9D2-pXM4i18GRBgwqiiQ6yISNCBSkJRb2eWXvO3bKC1Tx3lIoqBgep1yUORaDrBGiE4ENzTz7lAWqVvEEuZmc1TDRCcb-15BmFII0l7S8udfxDRBJcudRvbw';
+
 let client = axios.create({
   baseURL: apiBaseUri,
 });
 client.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+client.defaults.headers.common['Authorization'] = `Bearer ${key}`;
 
 export default client;
