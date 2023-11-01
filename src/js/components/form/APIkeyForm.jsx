@@ -2,7 +2,7 @@ import React from 'react';
 
 const APIkeyForm = ({ onChange, onSubmit }) => {
   return (
-    <div className="form__api">
+    <div className="form api_form">
       <form onSubmit={onSubmit}>
         <input type="text" className="input__text key" placeholder="로스트아크 API KEY를 입력해주세요." onChange={onChange} />
         <button 
