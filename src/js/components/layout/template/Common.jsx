@@ -12,7 +12,7 @@ const Common = ({ children, type, title }) => {
       </HelmetProvider>
       <ScrollToTop />
       
-      <div className="content">
+      <div className="wrapper">
         {children}
       </div>
 

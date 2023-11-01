@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Common from '../components/layout/template/Common';
+import CharaTab from '../components/element/CharaTab';
 import APIkeyFormContainer from '../containers/APIkeyFormContainer';
 import GetCharaContainer from '../containers/GetCharaContainer';
 
@@ -10,10 +11,10 @@ const Main = () => {
 
   return (
     <Common title={pageName}>
-      <div className="wrapper">
-        <APIkeyFormContainer i={0} />
-        <GetCharaContainer />
-      </div>
+      <CharaTab />
+      {/* <APIkeyFormContainer i={0} />
+      <GetCharaContainer /> */}
+        
     </Common>
   );
 };
