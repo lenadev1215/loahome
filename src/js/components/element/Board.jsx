@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import APIkeyFormContainer from '../../containers/APIkeyFormContainer';
 import GetCharaContainer from '../../containers/GetCharaContainer';
+import CharaList from './CharaList';
 import HomeworkList from './HomeworkList';
 
 const Board = () => {
@@ -12,9 +13,8 @@ const Board = () => {
   return (
     <div className="board">
       {/* <APIkeyFormContainer /> */}
-      <GetCharaContainer />
-      <div className="board__item"></div>
-      <div className="board__item"></div>
+      {/* <GetCharaContainer /> */}
+      <CharaList />
     </div>
   );
 };
