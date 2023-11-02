@@ -14,6 +14,14 @@ const Board = () => {
     <div className="board">
       {/* <APIkeyFormContainer /> */}
       {/* <GetCharaContainer /> */}
+      <div className="goldbox">
+        <span>
+          열심히 했다!
+          <span className="total">
+            182500
+          </span>
+        </span>
+      </div>
       <CharaList />
     </div>
   );

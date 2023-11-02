@@ -81,7 +81,7 @@
 ************************************************* */
 .board {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
     width: 100%;
     height: calc(100% - 60px);
@@ -93,6 +93,32 @@
     &__item {
         background-color: #F7FFE5;
         border-radius: 15px;
+    }
+}
+.goldbox {
+    padding: 15px;
+    margin: 0 0 30px auto;
+    color: #3d3d3d;
+    background-color: #F7FFE5;
+    border-radius: 10px;
+    font-size: 1rem;
+
+    .total {
+        margin-left: 10px;
+        color: #222;
+        font-size: 1.25rem;
+        font-weight: 600;
+
+        &::after {
+            content: '';
+            display: inline-block;
+            width: 21px;
+            height: 20px;
+            margin-left: 4px;
+            background-image: url(/assets/images/icon/icon_gold.png);
+            @include background();
+            vertical-align: -4px;
+        }
     }
 }
 
