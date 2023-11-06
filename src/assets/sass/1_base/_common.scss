@@ -264,6 +264,7 @@
 .chara {
     width: 100%;
     height: calc(100% - 150px);
+    overflow: auto;
 
     &__list {
         display: grid;

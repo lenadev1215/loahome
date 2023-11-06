@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SetCharaForm from '../components/form/SetCharaForm';
-import { changeField, getChara } from '../../store/chara';
+import { setChara } from '../../store/chara';
 
-const SetCharaContainer = () => {
+const SetCharaContainer = ({ toggleMore }) => {
+  const dispatch = useDispatch();
   const [ selected, setSelected ] = useState([]);
   const { form, charaData } = useSelector(({ chara }) => ({
     form: chara.form,
@@ -25,7 +26,21 @@ const SetCharaContainer = () => {
   const onSubmit = e => {
     e.preventDefault();
 
-    
+    const data = [];
+    selected.map(item => {
+      data.push({
+        CharacterName: item.CharacterName,
+        CharacterLevel: item.CharacterLevel,
+        ItemMaxLevel: item.ItemMaxLevel,
+        CharacterClassName: item.CharacterClassName,
+        ServerName: item.ServerName,
+        raids: [],
+      });
+    })
+
+    dispatch(setChara( data ));
+    // 초기화면으로
+    toggleMore();
   }
 
   return (

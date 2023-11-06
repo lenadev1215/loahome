@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CloseBtn from '../button/CloseBtn';
 import GetCharaContainer from '../../containers/GetCharaContainer';
 import SetCharaContainer from '../../containers/SetCharaContainer';
-import CharaList from './CharaList';
+import CharaListContainer from '../../containers/CharaListContainer';
 
 const Board = () => {
   const [ apply, setApply ] = useState(false);
@@ -32,7 +32,7 @@ const Board = () => {
               </span>
             </span>
           </div>
-          <CharaList
+          <CharaListContainer
             toggleApply={toggleApply}
           />
         </>
@@ -57,6 +57,7 @@ const Board = () => {
             onClick={toggleMore}
           />
           <SetCharaContainer 
+            toggleMore={toggleMore}
           />
         </>
       }

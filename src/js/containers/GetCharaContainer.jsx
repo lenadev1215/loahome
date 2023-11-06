@@ -38,7 +38,6 @@ const GetCharaContainer = ({ toggleMore }) => {
   // 통신 성공 시
   useEffect(() => {
     if ( charaData ) {
-      console.log(charaData);
     } else {
     }
   }, [ charaData ]);
