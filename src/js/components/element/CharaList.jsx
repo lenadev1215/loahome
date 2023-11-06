@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CharaList = ({ toggleApply, localCharaData }) => {
+const CharaList = ({ localCharaData, toggleApply, onRemove }) => {
   return (
     <div className="chara custom_scrollbar">
       <ul className="chara__list">
@@ -43,6 +43,11 @@ const CharaList = ({ toggleApply, localCharaData }) => {
 
                 <span className="total_gold">125000</span>
               </div>
+            </div>
+
+            <div className="btn_box">
+              <button type="button" className="btn btn__close" onClick={() => onRemove(item.CharacterName)}></button>
+              <button type="button" className="btn btn__move"></button>
             </div>
           </li>
         ))}

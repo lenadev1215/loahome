@@ -273,11 +273,32 @@
         column-gap: 25px;
 
         & > li {
+            position: relative;
             min-height: 321px;
             padding: 30px;
             background-color: #F7FFE5;
             border: 3px solid #F7FFE5;
             border-radius: 10px;
+
+            .btn_box {
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+            .btn {
+                &__close {
+                    width: 25px;
+                    height: 25px;
+
+                    &::before, &::after {
+                        height: 8px;
+                        background-color: #E1ECC8;
+                    }
+                    &:hover {
+                        transform: none;
+                    }
+                }
+            }
         }
         .add_box {
             position: relative;

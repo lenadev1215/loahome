@@ -11,9 +11,12 @@ const GET_CHARA_SUCCESS = 'chara/GET_CHARA_SUCCESS';
 const GET_CHARA_FAILURE = 'chara/GET_CHARA_FAILURE';
 // 로컬스토리지 캐릭터정보 Set
 const SET_CHARA = 'chara/SET_CHARA';
+// 로컬스토리지 캐릭터정보 Remove
+const REMOVE_CHARA = 'chara/REMOVE_CHARA';
 
 export const changeField = createAction(CHANGE_FIELD, ({ form, name, value }) => ({ form, name, value }));
 export const setChara = createAction(SET_CHARA, data => data);
+export const removeChara = createAction(REMOVE_CHARA, name => name);
 export const initializeForm = createAction(INITIALIZE_FORM);
 
 export const getChara = createRequestThunk(GET_CHARA, charaAPI.getChara);
@@ -64,6 +67,16 @@ export default handleActions(
         const dupl = [...parse, ...draft.localCharaData];
         const uniqueData = removeDuplicates(dupl, 'CharacterName');
         localStorage.setItem('charaData', JSON.stringify(uniqueData));
+      }),
+    [REMOVE_CHARA]: (state, { payload: name }) =>
+      produce(state, draft => {
+        const localData = localStorage.getItem('charaData');
+        const parse = JSON.parse(localData);
+        
+        const newData = parse.filter(item => item.CharacterName !== name);
+        draft.localCharaData = newData;
+
+        localStorage.setItem('charaData', JSON.stringify(newData));
       }),
   },
   initialState,

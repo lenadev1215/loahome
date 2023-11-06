@@ -14,10 +14,10 @@ const CharaTab = () => {
     <div className="tab">
       <ul className="tab__item">
         <li className="item">
-          <button type="button" className="active">놀자에여</button>
+          <button type="button" className="active">Chara01</button>
         </li>
         <li className="item">
-          <button type="button">순무선생</button>
+          <button type="button">Chara02</button>
         </li>
       </ul>
     </div>
