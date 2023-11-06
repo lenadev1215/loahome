@@ -19,7 +19,7 @@ const initialState = {
   form: {
     characterName: '',
   },
-  success: null,
+  charaData: null,
 };
 
 export default handleActions(
@@ -31,11 +31,11 @@ export default handleActions(
     [INITIALIZE_FORM]: state =>
       produce(state, draft => {
         draft.form = initialState.form;
-        draft.success = null;
+        draft.charaData = null;
       }),
     [GET_CHARA_SUCCESS]: (state, { payload: data }) =>
       produce(state, draft => {
-        draft.success = data;
+        draft.charaData = data;
       }),
   },
   initialState,

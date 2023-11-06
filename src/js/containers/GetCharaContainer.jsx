@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import GetCharaForm from '../components/form/GetCharaForm';
 import { changeField, initializeForm, getChara } from '../../store/chara';
 
-const GetCharaContainer = () => {
+const GetCharaContainer = ({ toggleMore }) => {
   const dispatch = useDispatch();
   const [ error, setError ] = useState(false);
-  const { form, success } = useSelector(({ chara }) => ({
+  const { form, charaData } = useSelector(({ chara }) => ({
     form: chara.form,
-    success: chara.success,
+    charaData: chara.charaData,
   }));
 
   // page clear
@@ -31,17 +31,17 @@ const GetCharaContainer = () => {
       alert('캐릭터이름을 입력해주세요.')
     }
 
+    toggleMore();
     dispatch(getChara({ characterName }));
   }
 
   // 통신 성공 시
   useEffect(() => {
-    if ( success ) {
-      console.log(success);
+    if ( charaData ) {
+      console.log(charaData);
     } else {
-      // alert('false');
     }
-  }, [ success ]);
+  }, [ charaData ]);
 
   return (
     <GetCharaForm 
