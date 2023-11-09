@@ -1,5 +1,4 @@
 import { createAction, handleActions } from 'redux-actions';
-import produce from 'immer';
 import createRequestThunk from '../lib/createRequestThunk';
 import * as charaAPI from '../lib/api/chara';
 
@@ -23,7 +22,7 @@ export const getChara = createRequestThunk(GET_CHARA, charaAPI.getChara);
 
 const initialState = {
   form: {
-    characterName: '놀자에여',
+    characterName: '',
   },
   charaData: [],
   localCharaData: [],
@@ -31,53 +30,60 @@ const initialState = {
 
 export default handleActions(
   {
-    [CHANGE_FIELD]: (state, { payload: { value } }) => 
-      produce(state, draft => {
-        draft.form.characterName = value;
-      }),
-    [INITIALIZE_FORM]: state =>
-      produce(state, draft => {
-        draft.form = initialState.form;
-        draft.charaData = [];
-      }),
-    [GET_CHARA_SUCCESS]: (state, { payload: data }) =>
-      produce(state, draft => {
-        draft.charaData = data;
-      }),
-    [SET_CHARA]: (state, { payload: data }) =>
-      produce(state, draft => {
-        draft.localCharaData = data;
-        
-        const localData = localStorage.getItem('charaData');
-        const parse = JSON.parse(localData);
+    [CHANGE_FIELD]: (state, { payload: { form, name, value } }) => {
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          [name]: value,
+        },
+      };
+    },
+    [INITIALIZE_FORM]: state => {
+      return {
+        ...state,
+        form: initialState.form,
+        charaData: [],
+      };
+    },
+    [GET_CHARA_SUCCESS]: (state, { payload: data }) => {
+      return {
+        ...state,
+        charaData: data,
+      };
+    },
+    [SET_CHARA]: (state, { payload: data }) => {
+      const dupl = [...state.localCharaData, ...data];
+      const uniqueData = removeDuplicates(dupl, 'CharacterName');
+      localStorage.setItem('charaData', JSON.stringify(uniqueData));
 
-        // 중복 name 제거
-        const removeDuplicates = (arr, key) => {
-          const set = new Set();
-          return arr.filter(item => {
-            const value = item[key];
-            if ( !set.has(value) ) {
-              set.add(value);
-              return true;
-            }
-            return false;
-          })
-        }
+      return {
+        ...state,
+        localCharaData: uniqueData,
+      };
+    },
+    [REMOVE_CHARA]: (state, { payload: name }) => {
+      const newData = state.localCharaData.filter(item => item.CharacterName !== name);
+      localStorage.setItem('charaData', JSON.stringify(newData));
 
-        const dupl = [...parse, ...draft.localCharaData];
-        const uniqueData = removeDuplicates(dupl, 'CharacterName');
-        localStorage.setItem('charaData', JSON.stringify(uniqueData));
-      }),
-    [REMOVE_CHARA]: (state, { payload: name }) =>
-      produce(state, draft => {
-        const localData = localStorage.getItem('charaData');
-        const parse = JSON.parse(localData);
-        
-        const newData = parse.filter(item => item.CharacterName !== name);
-        draft.localCharaData = newData;
-
-        localStorage.setItem('charaData', JSON.stringify(newData));
-      }),
+      return {
+        ...state,
+        localCharaData: newData,
+      };
+    },
   },
-  initialState,
-)
+  initialState
+);
+
+// 중복 name 제거 함수
+const removeDuplicates = (arr, key) => {
+  const set = new Set();
+  return arr.filter(item => {
+    const value = item[key];
+    if (!set.has(value)) {
+      set.add(value);
+      return true;
+    }
+    return false;
+  });
+};
