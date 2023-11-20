@@ -8,21 +8,36 @@ const RaidListContainer = ({ charaName, charaRaids }) => {
   const dispatch = useDispatch();
   const localCharaData = useSelector(memoizedLocalCharaData);
 
+  const updateChara = updateFc => {
+    // 현재 캐릭터
+    const selectChara = localCharaData.findIndex(item => item.CharacterName === charaName);
+    const newChara = [...localCharaData];
+    // 업데이트 함수
+    newChara[selectChara].raids = updateFc(newChara[selectChara].raids);
+    dispatch(setChara(newChara));
+  }
+
   const onSelect = e => {
     e.preventDefault();
     const { dataset } = e.target;
-    const selectChara = localCharaData.findIndex(item => item.CharacterName === charaName);
-    
-    // 배열 리페인트
-    const newChara = [...localCharaData];
-    newChara[selectChara].raids.push({ name: dataset.name, difficulty: dataset.difficulty });
-    dispatch(setChara(newChara));
+
+    updateChara(raid => [...raid, { name: dataset.name, difficulty: dataset.difficulty, completed: false }]);
+  }
+
+  const onDelete = name => {
+    updateChara(raid => raid.filter(item => item.name !== name));
+  }
+
+  const onCheck = name => {
+    updateChara(raid => raid.map(item => (item.name === name ? { ...item, completed: true } : item)));
   }
 
   return (
     <RaidList 
       charaRaids={charaRaids}
       onSelect={onSelect}
+      onDelete={onDelete}
+      onCheck={onCheck}
     />
   );
 };

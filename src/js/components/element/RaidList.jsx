@@ -22,14 +22,14 @@ const raidsName = [
   {name: '카멘 하드', dataName: '카멘', difficulty: 'hard'},
 ]
 
-const RaidList = ({ charaRaids, onSelect }) => {
+const RaidList = ({ charaRaids, onSelect, onDelete, onCheck }) => {
   const [ toggle, setToggle ] = useState(false);
 
   return (
     <>
       <ul className="raids__list">
         {charaRaids.map((item, i) => (
-          <li key={i}>
+          <li key={i} className={`${item.completed ? 'completed': ''}`}>
             <span className={`icon ${item.name}`}>
               {item.name}
             </span>
@@ -37,8 +37,14 @@ const RaidList = ({ charaRaids, onSelect }) => {
               {item.difficulty}
             </span>
             <span className="gold">
-              {raids[item.name].difficulty[item.difficulty].gold}
+              {raids[item.name].difficulty[item.difficulty].gold}G
             </span>
+
+            {/* 수정/삭제 박스 */}
+            <div className="update">
+              <button type="button" className="btn btn__check" onClick={() => onCheck(item.name)}></button>
+              <button type="button" className="btn btn__close" onClick={() => onDelete(item.name)}></button>
+            </div>
           </li>
         ))}
         {charaRaids.length < 3 && 

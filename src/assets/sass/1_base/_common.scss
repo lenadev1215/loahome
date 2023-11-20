@@ -201,6 +201,14 @@
             transform: rotate(180deg) scale(0.8);
         }
     }
+    &__check {
+        @include abCenter();
+        width: 60px;
+        height: 60px;
+        @include background();
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23F7FFE5' d='M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm0-2C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.393 7.5-5.643 5.784-2.644-2.506-1.856 1.858L10.75 17l7.5-7.643L16.393 7.5z'/%3E%3C/svg%3E");
+        background-color: transparent;
+    }
 }
 .api_form {
     max-width: 800px;
@@ -420,7 +428,47 @@
             border: 2px solid #C4D7B2;
             border-radius: 20px;
             margin-left: 15px;
-            cursor: pointer;
+            overflow: hidden;
+
+            &.completed {
+                &::after {
+                    content: '';
+                    display: block;
+                    @include abCenter();
+                    width: 100px;
+                    height: 100px;
+                    @include background();
+                }
+                &::before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(173, 181, 155, 0.8);
+                }
+                &:nth-child(1)::after {
+                    background-image: url(/assets/images/icon/icon_completed01.png);
+                }
+                &:nth-child(2)::after {
+                    background-image: url(/assets/images/icon/icon_completed02.png);
+                }
+                &:nth-child(3)::after {
+                    background-image: url(/assets/images/icon/icon_completed03.png);
+                }
+                .update {
+                    display: none;
+                }
+            }
+            &:hover {
+                .update {
+                    width: 100%;
+                    height: 100%;
+                    opacity: 1;
+                }
+            }
         }
         .icon {
             display: block;
@@ -472,10 +520,30 @@
             text-align: center;
         }
         .add {
+            cursor: pointer;
+            overflow: inherit;
+
             &.active {
                 border-bottom-left-radius: 0;
                 border-bottom-right-radius: 0;
                 border-bottom-color: transparent;
+            }
+        }
+        .update {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            background-color: rgba(173, 181, 155, 0.7);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow: hidden;
+            
+            .btn__close {
+                position: absolute;
+                top: 10px;
+                right: 10px;
             }
         }
     }
