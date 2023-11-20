@@ -1,4 +1,5 @@
 import React from 'react';
+import RaidListContainer from '../../containers/RaidListContainer';
 
 const CharaList = ({ localCharaData, toggleApply, onRemove }) => {
   return (
@@ -18,30 +19,7 @@ const CharaList = ({ localCharaData, toggleApply, onRemove }) => {
                 </span>
               </div>
               <div className="chara__raids">
-                <ul className="raids__list">
-                  <li>
-                    <span className="icon 발탄">
-                      발탄
-                    </span>
-                    <span className="level">
-                      Hard <span className="gold">2500G</span>
-                    </span>
-                  </li>
-                  <li>
-                    <span className="icon 비아키스">
-                      비아키스
-                    </span>
-                    <span className="level">
-                      Hard <span className="gold">2500G</span>
-                    </span>
-                  </li>
-                  <li>
-                    <span className="icon__add">
-                    </span>
-                  </li>
-                </ul>
-
-                <span className="total_gold">125000</span>
+                <RaidListContainer charaName={item.CharacterName} charaRaids={item.raids} />
               </div>
             </div>
 

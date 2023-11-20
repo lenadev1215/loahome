@@ -18,7 +18,7 @@ const GetCharaContainer = ({ toggleMore }) => {
 
   const onChange = e => {
     const { value } = e.target;
-    dispatch(changeField({ value }));
+    dispatch(changeField({ name: 'characterName', value }));
   }
   
   const onSubmit = e => {

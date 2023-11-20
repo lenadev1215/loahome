@@ -1,0 +1,114 @@
+{
+  "아르고스": {
+    "difficulty": {
+      "normal": {
+        "minLevel": 1370,
+        "gold": 1000
+      }
+    }
+  },
+  "오레하": {
+    "difficulty": {
+      "normal": {
+        "minLevel": 1340,
+        "gold": 500
+      },
+      "hard": {
+        "minLevel": 1370,
+        "gold": 600
+      }
+    }
+  },
+  "카양겔": {
+    "difficulty": {
+      "normal": {
+        "minLevel": 1540,
+        "gold": 4500
+      },
+      "hard": {
+        "minLevel": 1580,
+        "gold": 6500
+      }
+    }
+  },
+  "상아탑": {
+    "difficulty": {
+      "normal": {
+        "minLevel": 1600,
+        "gold": 9000
+      },
+      "hard": {
+        "minLevel": 1620,
+        "gold": 14500
+      }
+    }
+  },
+  "발탄": {
+    "difficulty": {
+      "normal": {
+        "minLevel": 1415,
+        "gold": 1200
+      },
+      "hard": {
+        "minLevel": 1445,
+        "gold": 1800
+      }
+    }
+  },
+  "비아키스": {
+    "difficulty": {
+      "normal": {
+        "minLevel": 1430,
+        "gold": 1600
+      },
+      "hard": {
+        "minLevel": 1460,
+        "gold": 2400
+      }
+    }
+  },
+  "쿠크세이튼": {
+    "difficulty": {
+      "normal": {
+        "minLevel": 1475,
+        "gold": 3000
+      }
+    }
+  },
+  "아브렐슈드": {
+    "difficulty": {
+      "normal": {
+        "minLevel": 1520,
+        "gold": 7000
+      },
+      "hard": {
+        "minLevel": 1560,
+        "gold": 9000
+      }
+    }
+  },
+  "일리아칸": {
+    "difficulty": {
+      "normal": {
+        "minLevel": 1580,
+        "gold": 7500
+      },
+      "hard": {
+        "minLevel": 1600,
+        "gold": 10000
+      }
+    }
+  },
+  "카멘": {
+    "difficulty": {
+      "normal": {
+        "minLevel": 1610,
+        "gold": 13000
+      },
+      "hard": {
+        "minLevel": 1630,
+        "gold": 41000
+      }
+    }
+  }
+}

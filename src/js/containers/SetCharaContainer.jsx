@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SetCharaForm from '../components/form/SetCharaForm';
 import { setChara } from '../../store/chara';
+import { CharaData } from '../../lib/util/charaUpdate';
 
 const SetCharaContainer = ({ toggleMore }) => {
   const dispatch = useDispatch();
   const [ selected, setSelected ] = useState([]);
-  const { form, charaData } = useSelector(({ chara }) => ({
-    form: chara.form,
+  const { charaData } = useSelector(({ chara }) => ({
     charaData: chara.charaData,
   }));
 
@@ -28,14 +28,9 @@ const SetCharaContainer = ({ toggleMore }) => {
 
     const data = [];
     selected.map(item => {
-      data.push({
-        CharacterName: item.CharacterName,
-        CharacterLevel: item.CharacterLevel,
-        ItemMaxLevel: item.ItemMaxLevel,
-        CharacterClassName: item.CharacterClassName,
-        ServerName: item.ServerName,
-        raids: [],
-      });
+      const chara = new CharaData(item.CharacterName, item.CharacterLevel, item.ItemMaxLevel, item.CharacterClassName, item.ServerName, []);
+
+      data.push(chara);
     })
 
     dispatch(setChara( data ));
