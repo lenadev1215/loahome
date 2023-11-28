@@ -112,10 +112,15 @@
         top: 30px;
         right: 30px;
     }
+    &__top {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 30px;
+    }
 }
 .goldbox {
     padding: 15px;
-    margin: 0 0 30px auto;
+    margin-left: 15px;
     color: #3d3d3d;
     background-color: #F7FFE5;
     border-radius: 10px;
@@ -208,6 +213,28 @@
         @include background();
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23F7FFE5' d='M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm0-2C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.393 7.5-5.643 5.784-2.644-2.506-1.856 1.858L10.75 17l7.5-7.643L16.393 7.5z'/%3E%3C/svg%3E");
         background-color: transparent;
+    }
+    &__reload {
+        position: relative;
+        width: 56px;
+        height: 56px;
+        background-color: #F7FFE5;
+        border-radius: 10px;
+
+        &::after {
+            content: '';
+            display: block;
+            @include abCenter();
+            width: 24px;
+            height: 24px;
+            background-image: url(/assets/images/icon/icon_reload.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: transform 0.4s ease-in-out;
+        }
+        &:hover::after {
+            transform: translate(-50%, -50%) rotate(180deg) ;
+        }
     }
 }
 .api_form {

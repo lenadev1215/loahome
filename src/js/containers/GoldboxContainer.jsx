@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setTotalGold } from '../../store/chara';
+import { setChara, setTotalGold } from '../../store/chara';
 import { memoizedLocalCharaData } from '../../store/selector/chara';
 
 const GoldboxContainer = () => {
@@ -27,18 +27,35 @@ const GoldboxContainer = () => {
     return getTotalGold;
   }
 
+  // 초기화
+  const onInit = () => {
+    const initChara = [...localCharaData];
+
+    initChara.forEach(chara => {
+      chara.raids.forEach(raid => {
+        raid.completed = false;
+      });
+    });
+
+    dispatch(setChara(initChara));
+  }
+
   useEffect(() => {
     dispatch(setTotalGold(totalGoldCalc()));
   }, [ localCharaData ]);
   
   return (
-    <div className="goldbox">
-      <span>
-        열심히 했다!
-        <span className="total">
-          {totalGold}
+    <div className="board__top">
+      <button type="button" className="btn btn__reload" onClick={onInit}></button>
+
+      <div className="goldbox">
+        <span>
+          열심히 했다!
+          <span className="total">
+            {totalGold}
+          </span>
         </span>
-      </span>
+      </div>
     </div>
   );
 };
