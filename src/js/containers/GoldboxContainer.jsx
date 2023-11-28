@@ -38,6 +38,7 @@ const GoldboxContainer = () => {
     });
 
     dispatch(setChara(initChara));
+    window.location.reload();
   }
 
   useEffect(() => {
