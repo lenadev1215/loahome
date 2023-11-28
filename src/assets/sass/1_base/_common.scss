@@ -36,6 +36,7 @@
 }
 .custom_scrollbar::-webkit-scrollbar {
     width: 5px;
+    height: 5px;
 }
 .custom_scrollbar::-webkit-scrollbar-thumb {
     background-color: #C4D7B2;
@@ -450,6 +451,33 @@
             }
             &.슬레이어 {
                 background-image: url(/assets/images/icon/job/슬레이어.png);
+            }
+            &.스페셜리스트 {
+                background-image: url(/assets/images/icon/job/스페셜리스트.png);
+            }
+            &.전사\(남\) {
+                background-image: url('/assets/images/icon/job/전사(남).png');
+            }
+            &.전사\(여\) {
+                background-image: url('/assets/images/icon/job/전사(여).png');
+            }
+            &.무도가\(남\) {
+                background-image: url('/assets/images/icon/job/무도가(남).png');
+            }
+            &.무도가\(여\) {
+                background-image: url('/assets/images/icon/job/무도가(여).png');
+            }
+            &.헌터\(남\) {
+                background-image: url('/assets/images/icon/job/헌터(남).png');
+            }
+            &.헌터\(여\) {
+                background-image: url('/assets/images/icon/job/헌터(여).png');
+            }
+            &.마법사 {
+                background-image: url('/assets/images/icon/job/마법사.png');
+            }
+            &.암살자 {
+                background-image: url('/assets/images/icon/job/암살자.png');
             }
         }
         .server {
