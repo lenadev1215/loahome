@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CloseBtn from '../button/CloseBtn';
+import GoldboxContainer from '../../containers/GoldboxContainer';
 import GetCharaContainer from '../../containers/GetCharaContainer';
 import SetCharaContainer from '../../containers/SetCharaContainer';
 import CharaListContainer from '../../containers/CharaListContainer';
@@ -24,14 +25,7 @@ const Board = () => {
       {/* 메인 */}
       {!apply && !more &&
         <>
-          <div className="goldbox">
-            <span>
-              열심히 했다!
-              <span className="total">
-                0
-              </span>
-            </span>
-          </div>
+          <GoldboxContainer />
           <CharaListContainer
             toggleApply={toggleApply}
           />

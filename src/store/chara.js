@@ -12,11 +12,14 @@ const GET_CHARA_FAILURE = 'chara/GET_CHARA_FAILURE';
 const SET_CHARA = 'chara/SET_CHARA';
 // 로컬스토리지 캐릭터정보 Remove
 const REMOVE_CHARA = 'chara/REMOVE_CHARA';
+// 총 골드량 저장
+const SET_TOTALGOLD = 'chara/SET_TOTALGOLD';
 
 export const changeField = createAction(CHANGE_FIELD, ({ form, name, value }) => ({ form, name, value }));
 export const setChara = createAction(SET_CHARA, data => data);
 export const removeChara = createAction(REMOVE_CHARA, name => name);
 export const initializeForm = createAction(INITIALIZE_FORM);
+export const setTotalGold = createAction(SET_TOTALGOLD, gold => gold);
 
 export const getChara = createRequestThunk(GET_CHARA, charaAPI.getChara);
 
@@ -26,6 +29,7 @@ const initialState = {
   },
   charaData: [],
   localCharaData: [],
+  totalGold: 0,
 };
 
 export default handleActions(
@@ -69,6 +73,14 @@ export default handleActions(
       return {
         ...state,
         localCharaData: newData,
+      };
+    },
+    [SET_TOTALGOLD]: (state, { payload: gold }) => {
+      localStorage.setItem('totalGold', JSON.stringify(gold));
+
+      return {
+        ...state,
+        totalGold: gold,
       };
     },
   },

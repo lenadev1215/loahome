@@ -7,13 +7,18 @@ import { memoizedLocalCharaData } from '../../store/selector/chara';
 const RaidListContainer = ({ charaName, charaRaids }) => {
   const dispatch = useDispatch();
   const localCharaData = useSelector(memoizedLocalCharaData);
+  const [ selectIndex, setSelectIndex ] = useState(null);
+
+  // 현재 chara index 저장
+  useEffect(() => {
+    setSelectIndex(localCharaData.findIndex(item => item.CharacterName === charaName))
+  }, []);
 
   const updateChara = updateFc => {
     // 현재 캐릭터
-    const selectChara = localCharaData.findIndex(item => item.CharacterName === charaName);
     const newChara = [...localCharaData];
     // 업데이트 함수
-    newChara[selectChara].raids = updateFc(newChara[selectChara].raids);
+    newChara[selectIndex].raids = updateFc(newChara[selectIndex].raids);
     dispatch(setChara(newChara));
   }
 
@@ -21,7 +26,7 @@ const RaidListContainer = ({ charaName, charaRaids }) => {
     e.preventDefault();
     const { dataset } = e.target;
 
-    updateChara(raid => [...raid, { name: dataset.name, difficulty: dataset.difficulty, completed: false }]);
+    updateChara(raid => [...raid, { name: dataset.name, difficulty: dataset.difficulty, gold: dataset.gold, completed: false }]);
   }
 
   const onDelete = name => {
