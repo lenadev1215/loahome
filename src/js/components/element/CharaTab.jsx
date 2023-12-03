@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import CharaTabItem from './CharaTabItem';
 
 const CharaTab = () => {
-  const [ item, setItem ] = useState([]);
-  useEffect(() => {
-    setItem(localStorage.getItem('apiKey'));
-  }, []);
-
   const onClick = () => {
 
   }
@@ -13,11 +9,12 @@ const CharaTab = () => {
   return (
     <div className="tab">
       <ul className="tab__item">
-        <li className="item">
-          <button type="button" className="active">Chara01</button>
-        </li>
-        <li className="item">
-          <button type="button">Chara02</button>
+        <CharaTabItem />
+        <li className="item add">
+          <div className="box">
+            <button type="button" className="icon__add">
+            </button>
+          </div>
         </li>
       </ul>
     </div>

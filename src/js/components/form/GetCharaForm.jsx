@@ -4,7 +4,7 @@ const GetCharaForm = ({ onChange, onSubmit }) => {
   return (
     <div className="form api_form">
       <form onSubmit={onSubmit}>
-        <input type="text" className="input__text key" placeholder="캐릭터명을 입력해주세요." onChange={onChange} />
+        <input type="text" className="input__text key" placeholder="캐릭터명을 입력해주세요." onChange={onChange} autoFocus />
         <button 
           type="submit" 
           className="btn btn__submit"

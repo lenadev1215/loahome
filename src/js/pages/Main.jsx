@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Common from '../components/layout/template/Common';
-import CharaTab from '../components/element/CharaTab';
+import CharaTabContainer from '../containers/CharaTabContainer';
 import Board from '../components/element/Board';
 import { getLocalKey } from '../../store/common';
 
@@ -11,7 +11,7 @@ const Main = () => {
 
   return (
     <Common title={pageName}>
-      <CharaTab />
+      <CharaTabContainer />
       <Board />
     </Common>
   );
