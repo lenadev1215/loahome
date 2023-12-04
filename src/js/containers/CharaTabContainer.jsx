@@ -22,12 +22,34 @@ const CharaTabContainer = () => {
     
     localStorage.setItem('charaData', JSON.stringify(parse));
     dispatch(getLocal());
+    dispatch(setCurrentIndex(localData.length));
+    dispatch(repaintChara(localData.length));
+  }
+
+  // 탭 이름 변경
+  const onSubmit = ( name, e ) => {
+    e.preventDefault();
+
+    const data = [...localData];
+    data[currentIndex].name = name;
+    localStorage.setItem('charaData', JSON.stringify(data));
+    dispatch(getLocal());
+  }
+
+  // 탭 삭제
+  const onDelete = i => {
+    const data = [...localData];
+    const newData = data.filter((item, idx) => idx !== i);
+
+    localStorage.setItem('charaData', JSON.stringify(newData));
   }
 
   return (
     <CharaTab 
       onSelect={onSelect}
       onNewTab={onNewTab}
+      onSubmit={onSubmit}
+      onDelete={onDelete}
       charaData={localData}
       currentIndex={currentIndex}
     />

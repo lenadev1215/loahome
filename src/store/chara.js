@@ -103,8 +103,6 @@ export default handleActions(
       };
     },
     [SET_TOTALGOLD]: (state, { payload: gold }) => {
-      localStorage.setItem('totalGold', JSON.stringify(gold));
-
       return {
         ...state,
         totalGold: gold,
