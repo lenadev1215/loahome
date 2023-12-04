@@ -82,7 +82,6 @@
             overflow: hidden;
         }
         .item {
-            &:first-child .box,
             &.active .box,
             &:hover .box {
                 background-color: #E1ECC8;

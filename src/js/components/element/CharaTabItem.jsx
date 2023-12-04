@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CharaTabItem = () => {
+const CharaTabItem = ({ onSelect, name, index, currentIndex }) => {
   const [ toggle, setToggle ] = useState(false);
 
   const onSubmit = e => {
@@ -9,7 +9,7 @@ const CharaTabItem = () => {
   }
 
   return (
-    <li className="item">
+    <li className={`item ${currentIndex === index ? 'active' : ''}`}>
       <div className="box">
         {toggle ?
           <form onSubmit={onSubmit}>
@@ -17,7 +17,7 @@ const CharaTabItem = () => {
             <input type="submit" className="blind" />
           </form>
           :
-          <button type="button" className="name" onDoubleClick={() => setToggle(true)}>Chara01</button>
+          <button type="button" className="name" onClick={() => onSelect(index)} onDoubleClick={() => setToggle(true)}>{name}</button>
         }
       </div>
     </li>
