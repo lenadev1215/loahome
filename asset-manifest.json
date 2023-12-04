@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/loahome/static/css/main.b4281c9d.css",
-    "main.js": "/loahome/static/js/main.c89d6ff9.js",
+    "main.css": "/loahome/static/css/main.f4f129e1.css",
+    "main.js": "/loahome/static/js/main.00981904.js",
     "index.html": "/loahome/index.html",
-    "main.b4281c9d.css.map": "/loahome/static/css/main.b4281c9d.css.map",
-    "main.c89d6ff9.js.map": "/loahome/static/js/main.c89d6ff9.js.map"
+    "main.f4f129e1.css.map": "/loahome/static/css/main.f4f129e1.css.map",
+    "main.00981904.js.map": "/loahome/static/js/main.00981904.js.map"
   },
   "entrypoints": [
-    "static/css/main.b4281c9d.css",
-    "static/js/main.c89d6ff9.js"
+    "static/css/main.f4f129e1.css",
+    "static/js/main.00981904.js"
   ]
 }
