@@ -11,7 +11,9 @@ const CharaTab = ({ onSelect, onNewTab, onSubmit, onDelete, charaData, currentIn
         {charaData && charaData.length < 7 &&
           <li className="item add">
             <div className="box">
-              <button type="button" className="icon__add" onClick={onNewTab} />
+              <button type="button" onClick={onNewTab}>
+                <span className="icon__add"></span>
+              </button>
             </div>
           </li>
         }

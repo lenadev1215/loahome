@@ -25,7 +25,9 @@ const CharaTabItem = ({ onSelect, onSubmit, onDelete, name, index, currentIndex 
           :
           <div className="name" onClick={() => onSelect(index)} onDoubleClick={() => setToggle(true)}>
             <span>{name}</span>
-            <button type="button" onClick={() => onDelete(index)} className="btn__close"></button>
+            {index > 0 &&
+              <button type="button" onClick={() => onDelete(index)} className="btn__close"></button>
+            }
           </div>
         }
       </div>

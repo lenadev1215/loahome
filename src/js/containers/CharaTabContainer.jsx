@@ -42,6 +42,7 @@ const CharaTabContainer = () => {
     const newData = data.filter((item, idx) => idx !== i);
 
     localStorage.setItem('charaData', JSON.stringify(newData));
+    window.location.reload();
   }
 
   return (
