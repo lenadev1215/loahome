@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setChara, setTotalGold } from '../../store/chara';
-import { memoizedLocalCharaData } from '../../store/selector/chara';
-import { memoizedTotalGold } from '../../store/selector/chara';
+import { memoizedTotalGold, memoizedLocalCharaData } from '../../store/selector/chara';
 
 const GoldboxContainer = () => {
   const dispatch = useDispatch();

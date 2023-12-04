@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { memoizedLocalCharaData } from '../../store/selector/chara';
-import { memoizedCurrentIndex } from '../../store/selector/chara';
+import { memoizedLocalCharaData, memoizedCurrentIndex } from '../../store/selector/chara';
 import CharaList from '../components/element/CharaList';
 import { getLocal, setChara, removeChara } from '../../store/chara';
 

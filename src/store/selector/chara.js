@@ -18,3 +18,9 @@ export const memoizedTotalGold = createSelector(
   [getTotalGold],
   totalGold => totalGold
 );
+
+const getLocalData = state => state.chara.localData;
+export const memoizedLocalData = createSelector(
+  [getLocalData],
+  localData => localData
+);
