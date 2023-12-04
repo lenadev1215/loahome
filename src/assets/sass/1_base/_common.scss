@@ -600,8 +600,9 @@
                     content: '';
                     display: block;
                     @include abCenter();
-                    width: 100px;
-                    height: 100px;
+                    width: 120px;
+                    height: 120px;
+                    background-image: url(/assets/images/icon/icon_completed.png);
                     @include background();
                 }
                 &::before {
@@ -613,15 +614,6 @@
                     width: 100%;
                     height: 100%;
                     background-color: rgba(173, 181, 155, 0.8);
-                }
-                &:nth-child(1)::after {
-                    background-image: url(/assets/images/icon/icon_completed01.png);
-                }
-                &:nth-child(2)::after {
-                    background-image: url(/assets/images/icon/icon_completed02.png);
-                }
-                &:nth-child(3)::after {
-                    background-image: url(/assets/images/icon/icon_completed03.png);
                 }
                 .update {
                     display: none;
