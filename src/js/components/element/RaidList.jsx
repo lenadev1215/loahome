@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import RaidGoldForm from '../form/RaidGoldForm';
 
 const raidsData = [
   {name: '오레하 노말', dataName: '오레하', difficulty: 'normal', minLevel: 1340, gold: 500},
@@ -21,7 +22,7 @@ const raidsData = [
   {name: '카멘 하드', dataName: '카멘', difficulty: 'hard', minLevel: 1630, gold: 41000},
 ]
 
-const RaidList = ({ charaRaids, onSelect, onDelete, onCheck }) => {
+const RaidList = ({ charaRaids, onSelect, onDelete, onCheck, onSubmit }) => {
   const [ toggle, setToggle ] = useState(false);
   const [ total, setTotal ] = useState(0);
 
@@ -52,34 +53,38 @@ const RaidList = ({ charaRaids, onSelect, onDelete, onCheck }) => {
       <ul className="raids__list">
         {charaRaids.map((item, i) => (
           <li key={i} className={`${item.completed ? 'completed': ''}`}>
-            <span className={`icon ${item.name}`}>
-              {item.name}
-            </span>
-            <span className="level">
-              {item.difficulty}
-            </span>
-            <span className="gold">
-              {item.gold}G
-            </span>
+            <div className="box">
+              <span className={`icon ${item.name}`}>
+                {item.name}
+              </span>
+              <span className="level">
+                {item.difficulty}
+              </span>
 
-            {/* 수정/삭제 박스 */}
-            <div className="update">
-              <button type="button" className="btn btn__check" onClick={() => onCheck(item.name)}></button>
-              <button type="button" className="btn btn__close" onClick={() => onDelete(item.name)}></button>
+              {/* 수정/삭제 박스 */}
+              <div className="update">
+                <button type="button" className="btn btn__check" onClick={() => onCheck(item.name)}></button>
+                <button type="button" className="btn btn__close" onClick={() => onDelete(item.name)}></button>
+              </div>
             </div>
+            <span className="gold">
+              <RaidGoldForm onSubmit={onSubmit} gold={item.gold} index={i} />골드
+            </span>
           </li>
         ))}
         {charaRaids.length < 3 && 
           <li className={`add ${toggle ? 'active' : ''}`} onClick={() => setToggle(!toggle)}>
-            <span className="icon__add">
-            </span>
-            {toggle &&
-              <ul className="raids__select custom_scrollbar">
-                {raidsData.map((item, i) => (
-                  <li key={i} onClick={onSelect} data-name={item.dataName} data-difficulty={item.difficulty} data-gold={item.gold}>{item.name}</li>
-                ))}
-              </ul>
-            }
+            <div className="box">
+              <span className="icon__add">
+              </span>
+              {toggle &&
+                <ul className="raids__select custom_scrollbar">
+                  {raidsData.map((item, i) => (
+                    <li key={i} onClick={onSelect} data-name={item.dataName} data-difficulty={item.difficulty} data-gold={item.gold}>{item.name}</li>
+                  ))}
+                </ul>
+              }
+            </div>
           </li>
         }
       </ul>

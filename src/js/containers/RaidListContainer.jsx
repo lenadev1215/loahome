@@ -22,6 +22,7 @@ const RaidListContainer = ({ charaName, charaRaids }) => {
     dispatch(setChara(newChara));
   }
 
+  // 레이드 목록 선택시 chara에 저장
   const onSelect = e => {
     e.preventDefault();
     const { dataset } = e.target;
@@ -29,12 +30,31 @@ const RaidListContainer = ({ charaName, charaRaids }) => {
     updateChara(raid => [...raid, { name: dataset.name, difficulty: dataset.difficulty, gold: dataset.gold, completed: false }]);
   }
 
+  // 레이드 목록에서 레이드 삭제
   const onDelete = name => {
     updateChara(raid => raid.filter(item => item.name !== name));
   }
 
+  // 레이드 목록 set
   const onCheck = name => {
     updateChara(raid => raid.map(item => (item.name === name ? { ...item, completed: true } : item)));
+  }
+
+  // custom 골드 submit
+  const onSubmit = ( gold, i, e ) => {
+    e.preventDefault();
+    
+    const updateFc = raids => {
+      const updateRaids = [...raids];
+
+      updateRaids[i] = {
+        ...updateRaids[i],
+        gold
+      };
+
+      return updateRaids;
+    }
+    updateChara(updateFc);
   }
 
   return (
@@ -43,6 +63,7 @@ const RaidListContainer = ({ charaName, charaRaids }) => {
       onSelect={onSelect}
       onDelete={onDelete}
       onCheck={onCheck}
+      onSubmit={onSubmit}
     />
   );
 };
